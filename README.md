@@ -55,3 +55,21 @@ Opens at http://localhost:5173.
 - Tailwind CSS (utility classes)
 - lucide-react (icons)
 - `window.storage` is shimmed to localStorage in `src/storage.js`
+
+### Executive assistant (Claude Code)
+
+`.claude/` in this repo configures an **executive assistant** for Claude Code
+sessions opened here. It uses the connected Gmail, Google Drive, GK Database
+(Zoho Creator), NetSuite, and Canva tools.
+
+- **Agent** — `.claude/agents/executive-assistant.md`. Ask business questions in
+  plain language ("what came in overnight that needs me?", "find the Buckskin
+  pad survey plat", "what did we invoice last month?") and Claude delegates to it.
+- **`/daily-brief`** — morning briefing: overnight email worth attention,
+  deadlines with days remaining, new Drive activity.
+- **`/inbox-triage`** — labels inbox threads (`EA/Action`, `EA/Waiting`,
+  `EA/Deadline`, `EA/FYI`) and queues reply drafts for approval.
+
+Guardrails: email only ever reaches your Gmail **Drafts** folder — nothing sends
+itself — and the assistant reads business systems freely but won't create or
+modify NetSuite/Zoho records without an explicit go-ahead.
